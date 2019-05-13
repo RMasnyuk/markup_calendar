@@ -1,0 +1,52 @@
+$daysOfWeek: (mon, tue, wed, thu, fri, sat, sun);
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calendar {
+  display: grid;
+  grid-template: repeat(6, 100px) / repeat(7, 100px);
+  grid-gap: 1px;
+  font-family: Arial, sans-serif;
+  font-size: 30px;
+}
+
+@for $daysInMonth from 28 through 31 {
+  @for $day from 1 through $daysInMonth {
+    .calendar-#{$daysInMonth} > div:nth-child(#{$day}):after {
+      content: '#{$day}';
+      display: flex;
+      width: 100px;
+      height: 100px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .calendar-#{$daysInMonth} > div:nth-child(#{$day}) {
+      background-color: #eee;
+      border: 1px solid black;
+
+      &:hover {
+        cursor: pointer;
+        transform: translateY(-20px);
+        background: pink;
+      }
+    }
+  }
+}
+
+  @each $dayOfWeek in $daysOfWeek {
+    .calendar-#{$dayOfWeek} div:first-child {
+      grid-column-start: index($daysOfWeek, $dayOfWeek);
+    }
+  }
+
+
+
