@@ -32,21 +32,21 @@ body {
     .calendar-#{$daysInMonth} > div:nth-child(#{$day}) {
       background-color: #eee;
       border: 1px solid black;
-
-      &:hover {
-        cursor: pointer;
-        transform: translateY(-20px);
-        background: pink;
-      }
     }
   }
 }
 
-  @each $dayOfWeek in $daysOfWeek {
-    .calendar-#{$dayOfWeek} div:first-child {
-      grid-column-start: index($daysOfWeek, $dayOfWeek);
-    }
+.calendar > div:hover {
+  cursor: pointer;
+  transform: translateY(-20px);
+  background: pink;
+}
+
+@each $dayOfWeek in $daysOfWeek {
+  .calendar-#{$dayOfWeek} div:first-child {
+    grid-column-start: index($daysOfWeek, $dayOfWeek);
   }
+}
 
 
 
